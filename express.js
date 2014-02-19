@@ -12,7 +12,7 @@ var oneDay = 86400000;
 app.use(express.static(__dirname + '/public', { maxAge: oneDay }));
 
  
-var db = mongoskin.db('localhost:27017/test', {safe:true});
+var db = mongoskin.db('mongodb://rm3d:rm3d@ds027769.mongolab.com:27769/rm3d_schema', {safe:true});
  
 app.param('collectionName', function(req, res, next, collectionName){
   req.collection = db.collection(collectionName)
