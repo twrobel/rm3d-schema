@@ -3,6 +3,14 @@ var express = require('express')
  
 var app = express()
 app.use(express.bodyParser())
+
+
+// The number of milliseconds in one day
+var oneDay = 86400000;
+
+// Serve up content from public directory
+app.use(express.static(__dirname + '/public', { maxAge: oneDay }));
+
  
 var db = mongoskin.db('localhost:27017/test', {safe:true});
  
@@ -49,4 +57,4 @@ app.del('/collections/:collectionName/:id', function(req, res) {
 })
  
  
-app.listen(3000)
+app.listen(process.env.PORT || 3000);
