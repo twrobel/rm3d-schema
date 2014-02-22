@@ -19,18 +19,13 @@ module.controller('demoController', function($scope, instrumentsSchemaService) {
 			//$scope.foos = myService.getFoos().then(function(foos) {
 			//	$scope.foos = foos;
 			//});
-			if(schema.length == 0 ){
-				instrumentsSchemaService.getInstruments().success(function(users){	
-					schema = users;
+			if(schema[instrumentType] == undefined ){
+				instrumentsSchemaService.getInstruments().success(function(instrument){	
+					schema[instrumentType] = instrument;
 				});
 			}
 			 
-			for(var i=0; i < schema.length; i++){
-				if(schema[i]['type'] === instrumentType){
-					return schema[i]['fields']
-				}
-			}
-			return []
+			return schema[instrumentType]['fields']
 		}
         $scope.parsePosition = function() {
 			var values = $scope.position.toLowerCase().split('|');
