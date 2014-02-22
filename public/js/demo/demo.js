@@ -4,8 +4,8 @@ var schema = []
 var module = angular.module('demo', ['angular-table']);
 module.factory('instrumentsSchemaService', function($http) {
 	   return {
-			getInstruments: function() {
-				 return $http.get('http://rm3d-schema.herokuapp.com/collections/instruments');
+			getInstruments: function(instrumentType) {
+				 return $http.get('http://rm3d-schema.herokuapp.com/collections/instruments/type/'+instrumentType);
 			}
 	   }
 	});
@@ -20,7 +20,7 @@ module.controller('demoController', function($scope, instrumentsSchemaService) {
 			//	$scope.foos = foos;
 			//});
 			if(schema[instrumentType] == undefined ){
-				instrumentsSchemaService.getInstruments().success(function(instrument){	
+				instrumentsSchemaService.getInstruments(instrumentType).success(function(instrument){	
 					schema[instrumentType] = instrument;
 				});
 			}
