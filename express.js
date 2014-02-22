@@ -35,7 +35,13 @@ app.post('/collections/:collectionName', function(req, res) {
     res.send(results)
   })
 })
- 
+
+app.get('/collections/:collectionName/type/:type', function(req, res) {
+  req.collection.findOne({type: req.params.type}, function(e, result){
+    if (e) return next(e)
+    res.send(result)
+  })
+})
  
 app.get('/collections/:collectionName/:id', function(req, res) {
   req.collection.findOne({_id: req.collection.id(req.params.id)}, function(e, result){
