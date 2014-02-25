@@ -12,17 +12,17 @@ module.factory('instrumentsSchemaService', function($http) {
 module.controller('demoController', function($scope, instrumentsSchemaService) {
         $scope.selectedRow = {};
         $scope.listOfFields = [];
-	$scope.getInstrumentFields = function(instrumentType){
+	$scope.getInstrumentFields = function(instrumentType, values){
 		if(schema[instrumentType] == undefined ){
 			instrumentsSchemaService.getInstruments(instrumentType).success(function(instrument){	
 				if(instrument['fields'] != undefined){
-					$scope.updateFields(instrument['fields']);
+					$scope.updateFields(instrument['fields'], values);
 				}
 			});
 		}
-		return $scope.updateFields(schema[instrumentType]['fields'])
+		return $scope.updateFields(schema[instrumentType]['fields'], values)
 	}
-	$scope.updateFields = function(instrumentFields){
+	$scope.updateFields = function(instrumentFields, values){
 		$scope.listOfFields = [];
 		for(var i = 0; i < instrumentFields.length; i++) {
                 	$scope.listOfFields.push({
@@ -34,7 +34,7 @@ module.controller('demoController', function($scope, instrumentsSchemaService) {
 	}
         $scope.parsePosition = function() {
 		var values = $scope.position.toLowerCase().split('|');
-            	$scope.getInstrumentFields(values[0]);
+            	$scope.getInstrumentFields(values[0], values);
         };
 
         $scope.handleRowSelection = function(row) {
