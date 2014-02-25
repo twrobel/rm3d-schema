@@ -23,8 +23,9 @@ module.controller('demoController', function($scope, instrumentsSchemaService) {
 					$scope.updateFields(instrument['fields'], values);
 				}
 			});
+		} else {
+			$scope.updateFields(schema[instrumentType]['fields'], values)
 		}
-		return $scope.updateFields(schema[instrumentType]['fields'], values)
 	}
 	$scope.updateFields = function(instrumentFields, values){
 		$scope.listOfFields = [];
@@ -37,8 +38,8 @@ module.controller('demoController', function($scope, instrumentsSchemaService) {
             	}
 	}
         $scope.parsePosition = function() {
-		var values = $scope.position.toLowerCase().split('|');
-            	$scope.getInstrumentFields(values[0], values);
+		var values = $scope.position.split('|');
+            	$scope.getInstrumentFields(values[0].toLowerCase(), values);
         };
 
         $scope.handleRowSelection = function(row) {
