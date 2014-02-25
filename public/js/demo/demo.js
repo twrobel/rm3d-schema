@@ -22,7 +22,7 @@ module.controller('demoController', function($scope, instrumentsSchemaService) {
 		}
 		return $scope.updateFields(schema[instrumentType]['fields'])
 	}
-	$scope.updateFields() = function(instrumentFields){
+	$scope.updateFields = function(instrumentFields){
 		$scope.listOfFields = [];
 		for(var i = 0; i < instrumentFields.length; i++) {
                 	$scope.listOfFields.push({
