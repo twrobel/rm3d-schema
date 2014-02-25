@@ -1,0 +1,37 @@
+<html ng-app="demo">
+    <head>
+        <link rel="stylesheet" href="css/lib/angular-table.css" />
+        <link rel="stylesheet" href="css/demo/demo.css" />
+    </head>
+
+    <body ng-controller="demoController" style="height: 100%;">
+		<div>
+			Enter position:
+		</div>
+		<input style="width: 100%;" type="text" ng-model="position" ng-change="parsePosition()" id="ng-change-example1" />
+
+        <div style="height: 100%; width: 100%; background-color: gainsboro;">
+        <table ng:controller="SortableTableCtrl">
+    <thead>
+        <tr>
+            <th>Pos</th>
+            <th>Name</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng:repeat="row in listOfFields">
+            <td>{{row.pos}}</td>
+            <td>{{row.name}}</td>
+            <td>{{row.value}}</td> 
+        </tr>
+    </tbody>
+</table>
+        </div>
+
+        <script src="js/lib/angular.js"></script>
+        <script src="js/demo/demo.js"></script>
+
+    </body>
+
+</html>
