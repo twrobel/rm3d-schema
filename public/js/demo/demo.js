@@ -1,5 +1,9 @@
 var schema = []
 
+$('[data-toggle="popover"]').popover({
+    trigger: 'hover',
+        'placement': 'top'
+});
 	
 var module = angular.module('demo', ['ngRoute']);
 module.factory('instrumentsSchemaService', function($http) {
