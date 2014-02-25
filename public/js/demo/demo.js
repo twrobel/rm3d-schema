@@ -1,7 +1,7 @@
 var schema = []
 
 	
-var module = angular.module('demo', ['angular-table']);
+var module = angular.module('demo', ['ngRoute']);
 module.factory('instrumentsSchemaService', function($http) {
 	   return {
 			getInstruments: function(instrumentType) {
