@@ -33,9 +33,21 @@ module.controller('demoController', function($scope, instrumentsSchemaService) {
                 	$scope.listOfFields.push({
                 			pos: instrumentFields[i]['pos'],
                    			name: instrumentFields[i]['name'],
+                   			req: instrumentFields[i]['req'],
+                   			desc: instrumentFields[i]['desc'],
+                   			type: instrumentFields[i]['type'],
                    			value: values[i]
                 	});
+	                $('[data-toggle="popover"]').popover({
+				 trigger: 'hover',
+	        		'placement': 'top',
+	        		 html : true, 
+			        content: function() {
+			          return $('#'+instrumentFields[i]['pos']+'_popover_content_wrapper').html();
+			        }
+			});
             	}
+            	
 	}
         $scope.parsePosition = function() {
 		var values = $scope.position.split('|');
