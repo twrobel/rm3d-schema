@@ -38,12 +38,13 @@ module.controller('demoController', function($scope, instrumentsSchemaService) {
                    			type: instrumentFields[i]['type'],
                    			value: values[i]
                 	});
-	                $('[data-toggle="popover"]').popover({
+                	var pos = instrumentFields[i]['pos'];
+	                $('[data-toggle="' + pos + '_popover"]').popover({
 				 trigger: 'hover',
 	        		'placement': 'top',
 	        		 html : true, 
 			        content: function() {
-			          return $('#'+instrumentFields[i]['pos']+'_popover_content_wrapper').html();
+			          return $('#'+pos+'_popover_content_wrapper').html();
 			        }
 			});
             	}
