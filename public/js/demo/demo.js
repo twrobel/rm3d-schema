@@ -47,6 +47,21 @@ module.controller('demoController', function($scope, instrumentsSchemaService) {
 			          return $('#'+pos+'_popover_content_wrapper').html();
 			        }
 			});
+			
+			var popoverContent = "<div><b>Type:</b> {{row.type}}" +
+	            	"</div>"
+	            	"<div>" +
+	            	"<b>Required:</b> {{row.req}}" +
+	            	"</div>" +	
+	            	"<div>" +
+	            	"<b>Description:</b> {{row.desc}}" +
+	            	"</div>";
+	            	$scope['popover_' + instrumentFields[i]['pos']] = {
+				trigger: 'hover',
+	        		'placement': 'top',
+	        		 html : true, 
+				  "content": popoverContent
+				};
             	}
             	
 	}
