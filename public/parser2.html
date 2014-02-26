@@ -29,18 +29,7 @@
             	{{row.pos}}
 	    </td>
             <td>
-            <div id="{{row.pos}}_popover_content_wrapper" style="display: none">
-            	<div>
-            	<b>Type:</b> {{row.type}}
-            	</div>
-            	<div>
-            	<b>Required:</b> {{row.req}}
-            	</div>	
-            	<div>
-            	<b>Description:</b> {{row.desc}}
-            	</div>	
-            </div>
-            	<div  data-toggle="{{row.pos}}_popover" data-content="">{{row.name}}</div></td>
+            	<div  bs-popover="popover_{{row.pos}}">{{row.name}}</div></td>
             <td>
             	{{row.value}}
             </td> 
