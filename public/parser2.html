@@ -25,7 +25,7 @@
     </thead>
     <tbody>
         <tr ng:repeat="row in listOfFields">
-            <div id="popover_content_wrapper" style="display: none">
+            <div id="{{row.pos}}_popover_content_wrapper" style="display: none">
             	<div>
             	<b>Type:</b> {{row.type}}
             	</div>
