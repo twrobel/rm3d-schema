@@ -37,7 +37,7 @@ app.post('/collections/:collectionName', function(req, res) {
 })
 
 app.get('/collections/:collectionName/type/:type', function(req, res) {
-  req.collection.findOne({type: new RegExp(req.params.type, "i")}, function(e, result){
+  req.collection.findOne({type: new RegExp('^' + req.params.type + '$', "i")}, function(e, result){
     if (e) return next(e)
     res.send(result)
   })
