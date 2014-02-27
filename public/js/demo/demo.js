@@ -29,9 +29,6 @@ module.controller('demoController', function($scope, instrumentsSchemaService) {
                 	$scope.listOfFields.push({
                 			pos: instrumentFields[i]['pos'],
                    			name: instrumentFields[i]['name'],
-                   			req: instrumentFields[i]['req'],
-                   			desc: instrumentFields[i]['desc'],
-                   			type: instrumentFields[i]['type'],
                    			value: values[i]
                 	});
                 	var pos = instrumentFields[i]['pos'];
@@ -44,14 +41,14 @@ module.controller('demoController', function($scope, instrumentsSchemaService) {
 			        }
 			});
 			
-			var popoverContent = "<div><b>Type:</b> {{row.type}}" +
+			var popoverContent = "<div><div><b>Type:</b> " + instrumentFields[i]['type'] +
 	            	"</div>"
 	            	"<div>" +
-	            	"<b>Required:</b> {{row.req}}" +
+	            	"<b>Required:</b> " + instrumentFields[i]['req'] +
 	            	"</div>" +	
 	            	"<div>" +
-	            	"<b>Description:</b> {{row.desc}}" +
-	            	"</div>";
+	            	"<b>Description:</b> " + instrumentFields[i]['desc'] +
+	            	"</div></div>";
 	            	$scope['popover_' + instrumentFields[i]['pos']] = {
 				trigger: 'hover',
 	        		'placement': 'top',
