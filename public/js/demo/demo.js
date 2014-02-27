@@ -41,14 +41,9 @@ module.controller('demoController', function($scope, instrumentsSchemaService) {
 			        }
 			});
 			
-			var popoverContent = "<div><div><b>Type:</b> " + instrumentFields[i]['type'] +
-	            	"</div>"
-	            	"<div>" +
-	            	"<b>Required:</b> " + instrumentFields[i]['req'] +
-	            	"</div>" +	
-	            	"<div>" +
-	            	"<b>Description:</b> " + instrumentFields[i]['desc'] +
-	            	"</div></div>";
+			var popoverContent = "(" + instrumentFields[i]['type'] +
+	            			"|" + instrumentFields[i]['req'] +
+	            			"|" + instrumentFields[i]['desc'] + ")";
 	            	$scope['popover_' + instrumentFields[i]['pos']] = {
 				trigger: 'hover',
 	        		'placement': 'top',
