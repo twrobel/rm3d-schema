@@ -14,6 +14,10 @@ app.use(express.static(__dirname + '/public', { maxAge: oneDay }));
  
 var db = mongoskin.db('mongodb://rm3d:rm3d@ds027769.mongolab.com:27769/rm3d_schema', {safe:true});
  
+RegExp.quote = function(str) {
+    return (str+'').replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
+};
+
 app.param('collectionName', function(req, res, next, collectionName){
   req.collection = db.collection(collectionName)
   return next()
@@ -37,7 +41,7 @@ app.post('/collections/:collectionName', function(req, res) {
 })
 
 app.get('/collections/:collectionName/type/:type', function(req, res) {
-  req.collection.findOne({type: new RegExp('^' + req.params.type + '$', "i")}, function(e, result){
+  req.collection.findOne({type: new RegExp('^' + RegExp.quote(req.params.type) + '$', "i")}, function(e, result){
     if (e) return next(e)
     res.send(result)
   })
